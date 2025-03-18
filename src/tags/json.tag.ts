@@ -1,4 +1,6 @@
-export const fetchJSONKeywords = {
+import type { ITag } from "./tag";
+
+export const fetchJSONKeywords: ITag = {
 	keyword: "json",
 	description: "JavaScript Object Notation",
 	library_link: ["encoding/json"],

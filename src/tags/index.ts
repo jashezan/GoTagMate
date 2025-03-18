@@ -1,3 +1,4 @@
-export * from "./gorm";
-export * from "./validate";
-export * from "./json";
+export * from "./gorm.tag";
+export * from "./validate.tag";
+export * from "./json.tag";
+export * from "./tag";

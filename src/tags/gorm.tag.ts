@@ -1,4 +1,6 @@
-export const fetchGormKeywords = {
+import type { ITag } from "./tag";
+
+export const fetchGormKeywords: ITag = {
 	keyword: "gorm",
 	description:
 		"GORM is a fantastic ORM library for Golang, aims to be developer friendly.",
