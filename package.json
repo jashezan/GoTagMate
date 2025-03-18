@@ -25,11 +25,7 @@
 	"bugs": {
 		"url": "https://github.com/jashezan/GoTagMate/issues"
 	},
-	"categories": [
-		"Programming Languages",
-		"Snippets",
-		"Languages"
-	],
+	"categories": ["Programming Languages", "Snippets", "Languages"],
 	"contributes": {
 		"breakpoints": [
 			{
@@ -123,19 +119,12 @@
 		},
 		"languages": [
 			{
-				"aliases": [
-					"Golang",
-					"Go"
-				],
-				"extensions": [
-					".go"
-				],
+				"aliases": ["Golang", "Go"],
+				"extensions": [".go"],
 				"id": "go"
 			},
 			{
-				"aliases": [
-					"Goplus"
-				],
+				"aliases": ["Goplus"],
 				"extensions": [
 					".gop",
 					".spx",
@@ -163,23 +152,18 @@
 	"engines": {
 		"vscode": "^1.73.0"
 	},
-	"extensionKind": [
-		"ui",
-		"workspace"
-	],
+	"extensionKind": ["ui", "workspace"],
 	"galleryBanner": {
 		"color": "#F2F2F2",
 		"theme": "dark"
 	},
 	"homepage": "https://github.com/jashezan/GoTagMate",
 	"icon": "assets/gotagmate.png",
-	"keywords": [
-		"golang",
-		"go",
-		"gotagmate",
-		"golang struct"
-	],
+	"keywords": ["golang", "go", "gotagmate", "golang struct"],
 	"license": "MIT",
+	"lint-staged": {
+		"*": ["npm run validate"]
+	},
 	"main": "./out/extension.js",
 	"name": "gotagmate",
 	"preview": false,
@@ -200,18 +184,11 @@
 		"format:fix": "biome format --write .",
 		"lint": "biome lint .",
 		"lint:fix": "biome lint --write .",
+		"prepare": "husky",
 		"validate": "biome format --write . && biome lint --write . && biome check --write .",
 		"vscode:prepublish": "npm run compile",
-		"watch": "tsc -watch -p ./",
-		"prepare": "husky"
+		"watch": "tsc -watch -p ./"
 	},
-	"lint-staged": {
-		"*": [
-			"npm run validate"
-		]
-	},
-	"trustedDependencies": [
-		"@biomejs/biome"
-	],
+	"trustedDependencies": ["@biomejs/biome"],
 	"version": "0.0.1"
 }

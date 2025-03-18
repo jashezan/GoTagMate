@@ -1,5 +1,9 @@
 import * as vscode from "vscode";
-import { fetchGormKeywords, fetchValidateKeywords, fetchJSONKeywords } from "./tags";
+import {
+	fetchGormKeywords,
+	fetchJSONKeywords,
+	fetchValidateKeywords,
+} from "./tags";
 
 export class GoTagCompletionProvider implements vscode.CompletionItemProvider {
 	provideCompletionItems(
@@ -150,15 +154,17 @@ export class GoTagCompletionProvider implements vscode.CompletionItemProvider {
 
 	private toSnakeCase(str: string): string {
 		// Handle acronyms (e.g., ID -> id, DBName -> db_name)
-		return str
-			// Insert an underscore before uppercase letters that are not at the start of the string
-			.replace(/([A-Z])/g, (letter) => `_${letter.toLowerCase()}`)
-			// Remove leading underscores
-			.replace(/^_/, "")
-			// Handle special cases for acronyms (e.g., ID -> id, DB -> db)
-			.replace(/([a-z])_([a-z])/g, (match, p1, p2) => `${p1}${p2}`)
-			// Convert multiple underscores to a single underscore
-			.replace(/_+/g, "_");
+		return (
+			str
+				// Insert an underscore before uppercase letters that are not at the start of the string
+				.replace(/([A-Z])/g, (letter) => `_${letter.toLowerCase()}`)
+				// Remove leading underscores
+				.replace(/^_/, "")
+				// Handle special cases for acronyms (e.g., ID -> id, DB -> db)
+				.replace(/([a-z])_([a-z])/g, (match, p1, p2) => `${p1}${p2}`)
+				// Convert multiple underscores to a single underscore
+				.replace(/_+/g, "_")
+		);
 	}
 
 	private createCompletionItem(
@@ -177,7 +183,6 @@ export class GoTagCompletionProvider implements vscode.CompletionItemProvider {
 
 		// Format documentation with Markdown
 		if (documentation) {
-
 			const docString = Array.isArray(documentation)
 				? documentation.map((doc) => `Usage: \`${doc}\``).join("\n\n")
 				: `Usage: \`${documentation}\``;
