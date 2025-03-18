@@ -1,0 +1,217 @@
+{
+	"activationEvents": [
+		"onLanguage:go",
+		"onLanguage:gop",
+		"workspaceContains:*.go",
+		"workspaceContains:*/*.go",
+		"workspaceContains:*/*/*.go",
+		"workspaceContains:**/*.gop",
+		"workspaceContains:**/*.spx",
+		"workspaceContains:**/*.rdx",
+		"workspaceContains:**/*.gmx",
+		"workspaceContains:**/*.gox",
+		"workspaceContains:**/*.gsh",
+		"workspaceContains:**/*.yap",
+		"onDebugInitialConfigurations",
+		"onDebugResolve:go",
+		"onDebugResolve:gop",
+		"onWebviewPanel:welcomeGo"
+	],
+	"author": {
+		"email": "jashezan@gmail.com",
+		"name": "Jubyer Ahmed Shezan",
+		"url": "https://github.com/jashezan"
+	},
+	"bugs": {
+		"url": "https://github.com/jashezan/GoTagMate/issues"
+	},
+	"categories": [
+		"Programming Languages",
+		"Snippets",
+		"Languages"
+	],
+	"contributes": {
+		"breakpoints": [
+			{
+				"language": "go"
+			}
+		],
+		"commands": [
+			{
+				"command": "gotagmate.enable",
+				"shortTitle": "gotagmate",
+				"title": "Enable GoTagMate"
+			}
+		],
+		"configuration": {
+			"properties": {
+				"gop.addTags": {
+					"additionalProperties": false,
+					"default": {
+						"options": "json=omitempty",
+						"promptForTags": false,
+						"tags": "json",
+						"template": "",
+						"transform": "snakecase"
+					},
+					"description": "Tags and options configured here will be used by the Add Tags command to add tags to struct fields. If promptForTags is true, then user will be prompted for tags and options. By default, json tags are added.",
+					"properties": {
+						"options": {
+							"default": "json=omitempty",
+							"description": "Comma separated tag=options pairs to be used by Go: Add Tags command",
+							"type": "string"
+						},
+						"promptForTags": {
+							"default": false,
+							"description": "If true, Go: Add Tags command will prompt the user to provide tags, options, transform values instead of using the configured values",
+							"type": "boolean"
+						},
+						"tags": {
+							"default": "json",
+							"description": "Comma separated tags to be used by Go: Add Tags command",
+							"type": "string"
+						},
+						"template": {
+							"default": "",
+							"description": "Custom format used by Go: Add Tags command for the tag value to be applied",
+							"type": "string"
+						},
+						"transform": {
+							"default": "snakecase",
+							"description": "Transformation rule used by Go: Add Tags command to add tags",
+							"enum": [
+								"snakecase",
+								"camelcase",
+								"lispcase",
+								"pascalcase",
+								"keep"
+							],
+							"type": "string"
+						}
+					},
+					"scope": "resource",
+					"type": "object"
+				},
+				"gotagmate.enable": {
+					"default": true,
+					"description": "Enable GoTagMate autocompletions",
+					"type": "boolean"
+				}
+			}
+		},
+		"configurationDefaults": {
+			"[go]": {
+				"editor.acceptSuggestionOnCommitCharacter": true,
+				"editor.acceptSuggestionOnEnter": "smart",
+				"editor.autoClosingBrackets": "languageDefined",
+				"editor.autoClosingComments": "languageDefined",
+				"editor.autoClosingDelete": "auto",
+				"editor.autoClosingOvertype": "auto",
+				"editor.autoClosingQuotes": "always",
+				"editor.autoIndent": "advanced",
+				"editor.bracketPairColorization.enabled": true,
+				"editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+				"editor.codeActionWidget.includeNearbyQuickFixes": true,
+				"editor.comments.ignoreEmptyLines": true,
+				"editor.comments.insertSpace": true,
+				"editor.detectIndentation": true,
+				"editor.hover.enabled": true,
+				"editor.insertSpaces": false,
+				"editor.links": true,
+				"editor.tabCompletion": "on"
+			}
+		},
+		"languages": [
+			{
+				"aliases": [
+					"Golang",
+					"Go"
+				],
+				"extensions": [
+					".go"
+				],
+				"id": "go"
+			},
+			{
+				"aliases": [
+					"Goplus"
+				],
+				"extensions": [
+					".gop",
+					".spx",
+					".rdx",
+					".gmx",
+					".gox",
+					".gsh",
+					".yap"
+				],
+				"id": "gop"
+			}
+		]
+	},
+	"description": "Autocompletion and hover suggestions for Go struct tags",
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@types/node": "^20",
+		"@types/vscode": "^1.73.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.5.0",
+		"typescript": "^5.8.2"
+	},
+	"displayName": "GoTagMate",
+	"enableTelemetry": false,
+	"engines": {
+		"vscode": "^1.73.0"
+	},
+	"extensionKind": [
+		"ui",
+		"workspace"
+	],
+	"galleryBanner": {
+		"color": "#F2F2F2",
+		"theme": "dark"
+	},
+	"homepage": "https://github.com/jashezan/GoTagMate",
+	"icon": "assets/gotagmate.png",
+	"keywords": [
+		"golang",
+		"go",
+		"gotagmate",
+		"golang struct"
+	],
+	"license": "MIT",
+	"main": "./out/extension.js",
+	"name": "gotagmate",
+	"preview": false,
+	"pricing": "Free",
+	"private": true,
+	"publisher": "jashezan",
+	"qna": "marketplace",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jashezan/GoTagMate"
+	},
+	"scripts": {
+		"check": "biome check .",
+		"check:fix": "biome check --fix .",
+		"clean": "rm -r node_modules && rm -r out",
+		"compile": "tsc -p ./",
+		"format": "biome format .",
+		"format:fix": "biome format --write .",
+		"lint": "biome lint .",
+		"lint:fix": "biome lint --write .",
+		"validate": "biome format --write . && biome lint --write . && biome check --write .",
+		"vscode:prepublish": "npm run compile",
+		"watch": "tsc -watch -p ./",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"*": [
+			"npm run validate"
+		]
+	},
+	"trustedDependencies": [
+		"@biomejs/biome"
+	],
+	"version": "0.0.1"
+}
