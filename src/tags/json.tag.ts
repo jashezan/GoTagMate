@@ -1,4 +1,4 @@
-import type { ITag } from "./tag";
+import type { ITag } from "./tag.type";
 
 export const fetchJSONKeywords: ITag = {
 	keyword: "json",
