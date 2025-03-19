@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import { GoTagCompletionProvider } from "./completion/completion.provider";
-import { APP_DESCRIPTION, APP_NAME, APP_VERSION } from "./description";
 import { TRIGGER_CHARACTERS } from "./constants/trigger_chars.const";
+import { APP_DESCRIPTION, APP_NAME, APP_VERSION } from "./description";
 
 export function activate(context: vscode.ExtensionContext) {
 	const provider = new GoTagCompletionProvider();

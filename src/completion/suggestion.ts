@@ -1,13 +1,13 @@
 import type * as vscode from "vscode";
-import { createCompletionItem } from "../utils/completion_item.util";
 import type { ITagList } from "../tags";
 import {
 	fetchGormKeywords,
 	fetchJSONKeywords,
 	fetchValidateKeywords,
 } from "../tags";
-import { toSnakeCase } from "../utils/snake_case.util";
+import { createCompletionItem } from "../utils/completion_item.util";
 import { getFieldName } from "../utils/field_name.util";
+import { toSnakeCase } from "../utils/snake_case.util";
 
 export const getLibrarySuggestions = (): vscode.CompletionItem[] => {
 	return [

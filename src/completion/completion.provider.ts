@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import { getLibrarySuggestions, getTagSpecificSuggestions } from "./suggestion";
 import { isInsideQuotes } from "../utils/check_quote.util";
 import { isInsideGoStruct } from "../utils/check_struct.util";
+import { getLibrarySuggestions, getTagSpecificSuggestions } from "./suggestion";
 
 export class GoTagCompletionProvider implements vscode.CompletionItemProvider {
 	// Main function to provide completion items based on cursor context
