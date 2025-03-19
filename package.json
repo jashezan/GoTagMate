@@ -162,7 +162,7 @@
 	"keywords": ["golang", "go", "gotagmate", "golang struct"],
 	"license": "MIT",
 	"lint-staged": {
-		"*": ["npm run validate"]
+		"*": ["biome format --write . && biome lint --write . && biome check --write ."]
 	},
 	"main": "./out/extension.js",
 	"name": "gotagmate",
