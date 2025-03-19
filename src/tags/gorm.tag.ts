@@ -114,9 +114,9 @@ export const fetchGormKeywords: ITag = {
 				"creates check constraint, eg: check:age > 13, refer Constraints",
 			tag_usage: [
 				'gorm:"check:age > 13"',
-				"gorm:\"check:name_checker,name <> 'jinzhu'\"`",
-				"gorm:\"check:,name <> 'jinzhu'\"`",
-				"gorm:\"check:age > 13, name_checker,name <> 'jinzhu'\"`",
+				"gorm:\"check:name_checker,name <> 'jinzhu'\"",
+				"gorm:\"check:,name <> 'jinzhu'\"",
+				"gorm:\"check:age > 13, name_checker,name <> 'jinzhu'\"",
 			],
 		},
 		{

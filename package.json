@@ -17,13 +17,13 @@
 		"onDebugResolve:gop",
 		"onWebviewPanel:welcomeGo"
 	],
+	"bugs": {
+		"url": "https://github.com/jashezan/GoTagMate/issues"
+	},
 	"author": {
 		"email": "jashezan@gmail.com",
 		"name": "Jubyer Ahmed Shezan",
 		"url": "https://github.com/jashezan"
-	},
-	"bugs": {
-		"url": "https://github.com/jashezan/GoTagMate/issues"
 	},
 	"categories": ["Programming Languages", "Snippets", "Languages"],
 	"contributes": {
