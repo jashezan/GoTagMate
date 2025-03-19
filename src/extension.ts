@@ -19,4 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
 	console.log(`${APP_NAME} v${APP_VERSION} activated: ${APP_DESCRIPTION}`);
 }
 
+/**
+ * Deactivate Function is for cleaning
+ */
 export function deactivate() {}
