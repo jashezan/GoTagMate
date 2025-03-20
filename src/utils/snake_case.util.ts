@@ -1,5 +1,8 @@
 /**
- * Converts CamelCase to snake_case.
+ * The function `toSnakeCase` converts a given string to snake_case format.
+ * @param {string} str - A string that you want to convert to snake_case.
+ * @returns The function `toSnakeCase` takes a string as input and converts it to snake_case format. It
+ * returns the input string converted to snake_case format.
  */
 export function toSnakeCase(str: string): string {
 	return str
