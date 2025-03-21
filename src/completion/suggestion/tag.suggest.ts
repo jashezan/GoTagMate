@@ -1,5 +1,6 @@
 import type * as vscode from "vscode";
 import { getBsonCompletionItems } from "./libraries/bson.suggest";
+import { getDynamoDBCompletionItems } from "./libraries/dynamodb.suggest";
 import { getEnvCompletionItems } from "./libraries/env.suggest";
 import { getGinBindingCompletionItems } from "./libraries/gin_binding.suggest";
 import { getGormCompletionItems } from "./libraries/gorm.suggest";
@@ -64,6 +65,8 @@ export const getTagSpecificSuggestions = (
 				return getMsgPackCompletionItems(document, position);
 			case "bson":
 				return getBsonCompletionItems(document, position);
+			case "dynamodbav":
+				return getDynamoDBCompletionItems(document, position);
 			default:
 				return [];
 		}

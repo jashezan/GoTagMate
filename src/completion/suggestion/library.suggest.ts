@@ -32,6 +32,13 @@ const tags: Tag[] = [
 		documentation: ['env:"FIELD_NAME"'],
 	},
 	{
+		label: "dynamodbav",
+		detail: "Dynamodbav tags for struct fields",
+		insertText: 'dynamodbav:"$1"',
+		triggerSuggest: true,
+		documentation: ['dynamodbav:"FIELD_NAME"'],
+	},
+	{
 		label: "envDefault",
 		detail: "Specifies a fallback value for the field if the environment variable is not set or empty. This value is used during parsing if no environment variable is provided.",
 		insertText: 'envDefault:"$1"',
