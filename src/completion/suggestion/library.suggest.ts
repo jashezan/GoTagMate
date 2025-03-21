@@ -18,6 +18,13 @@ const tags: Tag[] = [
 		documentation: ['json:"field_name"'],
 	},
 	{
+		label: "bson",
+		detail: "BSON tags for struct fields",
+		insertText: 'bson:"$1"',
+		triggerSuggest: true,
+		documentation: ['bson:"field_name"'],
+	},
+	{
 		label: "env",
 		detail: "ENV tags for struct fields",
 		insertText: 'env:"$1"',

@@ -1,4 +1,5 @@
 import type * as vscode from "vscode";
+import { getBsonCompletionItems } from "./libraries/bson.suggest";
 import { getEnvCompletionItems } from "./libraries/env.suggest";
 import { getGinBindingCompletionItems } from "./libraries/gin_binding.suggest";
 import { getGormCompletionItems } from "./libraries/gorm.suggest";
@@ -61,6 +62,8 @@ export const getTagSpecificSuggestions = (
 				return getHCLCompletionItems(document, position);
 			case "msgpack":
 				return getMsgPackCompletionItems(document, position);
+			case "bson":
+				return getBsonCompletionItems(document, position);
 			default:
 				return [];
 		}
