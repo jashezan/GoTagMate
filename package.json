@@ -25,7 +25,7 @@
 	"bugs": {
 		"url": "https://github.com/jashezan/GoTagMate/issues"
 	},
-	"categories": ["Programming Languages", "Snippets", "Languages"],
+	"categories": ["Programming Languages", "Snippets", "Keymaps", "Other"],
 	"contributes": {
 		"breakpoints": [
 			{
@@ -159,7 +159,29 @@
 	},
 	"homepage": "https://github.com/jashezan/GoTagMate",
 	"icon": "assets/gotagmate.png",
-	"keywords": ["golang", "go", "gotagmate", "golang struct"],
+	"keywords": [
+		"golang",
+		"go",
+		"gotagmate",
+		"golang struct",
+		"golang struct tags",
+		"golang tags",
+		"golang struct tag",
+		"golang struct tag autocomplete",
+		"golang struct tag hover",
+		"golang struct tag suggestions",
+		"golang struct tag completion",
+		"golang struct tag autocompletion",
+		"golang struct tag hover suggestions",
+		"golang struct tag suggestions",
+		"golang struct tag completion suggestions",
+		"golang struct tag autocompletion suggestions",
+		"golang struct tag hover suggestions",
+		"golang struct tag suggestions",
+		"golang struct tag completion suggestions",
+		"golang struct tag autocompletion suggestions",
+		"golang struct tag hover suggestions"
+	],
 	"license": "MIT",
 	"lint-staged": {
 		"*": [
@@ -172,7 +194,7 @@
 	"pricing": "Free",
 	"private": false,
 	"publisher": "jashezan",
-	"qna": "marketplace",
+	"qna": "https://github.com/jashezan/GoTagMate/discussions",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/jashezan/GoTagMate"
@@ -184,7 +206,7 @@
 		"clean": "rm -r node_modules && rm -r out",
 		"compile": "tsc -p ./",
 		"format": "biome format .",
-		"format:fix": "biome format --write .",
+		"format:fix": "biome format --write ./src/utils",
 		"lint": "biome lint .",
 		"lint:fix": "biome lint --write .",
 		"prepare": "husky",
@@ -193,5 +215,5 @@
 		"watch": "tsc -watch -p ./"
 	},
 	"trustedDependencies": ["@biomejs/biome"],
-	"version": "0.0.1"
+	"version": "1.0.0"
 }
