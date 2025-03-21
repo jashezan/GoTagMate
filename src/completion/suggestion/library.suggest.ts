@@ -125,6 +125,13 @@ const tags: Tag[] = [
 		documentation: ['form:"name"'],
 	},
 	{
+		label: "hcl",
+		detail: "HCL tags for struct fields",
+		insertText: 'hcl:"$1"',
+		triggerSuggest: true,
+		documentation: ['hcl:"name"'],
+	},
+	{
 		label: "comment",
 		detail: "Adds a # comment on the same line as the field in the TOML output, library: github.com/pelletier/go-toml",
 		insertText: 'comment:"$1"',
