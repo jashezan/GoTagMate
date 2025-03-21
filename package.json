@@ -178,6 +178,7 @@
 		"url": "https://github.com/jashezan/GoTagMate"
 	},
 	"scripts": {
+		"build": "rm -r out && tsc -p ./",
 		"check": "biome check .",
 		"check:fix": "biome check --fix .",
 		"clean": "rm -r node_modules && rm -r out",

@@ -16,70 +16,37 @@ import { getValidateCompletionItems } from "./libraries/validate.suggest";
 import { getXMLCompletionItems } from "./libraries/xml.suggest";
 import { getYAMLCompletionItems } from "./libraries/yaml.suggest";
 
-/**
- * The function `getTagSpecificSuggestions` returns completion items based on the specified tag type
- * for a given document and position.
- * @param {string} tagType - The `tagType` parameter is a string that specifies the type of tag for
- * which you want to get suggestions. It could be one of the following values: "gorm", "validate",
- * "json", "env", or "redis".
- * @param document - The `document` parameter in the `getTagSpecificSuggestions` function refers to the
- * current text document in the editor where the code completion is being triggered. It contains the
- * content and metadata of the file being edited, such as the text, language, and URI. This parameter
- * is used to provide context
- * @param position - The `position` parameter in the `getTagSpecificSuggestions` function represents
- * the position in the text document where code completion is being triggered. This position is used to
- * provide context for the completion items being suggested, such as the current cursor location in the
- * document.
- * @returns The function `getTagSpecificSuggestions` returns an array of `vscode.CompletionItem`
- * objects based on the `tagType` provided. The specific completion items returned depend on the value
- * of `tagType` and are obtained from different helper functions such as `getGormCompletionItems`,
- * `getValidateCompletionItems`, `getJsonCompletionItems`, `getEnvCompletionItems`, and `get
- */
+// Lookup table for tag-specific completion functions
+const completionHandlers: {
+	[key: string]: (
+		doc: vscode.TextDocument,
+		pos: vscode.Position,
+	) => vscode.CompletionItem[];
+} = Object.freeze({
+	json: getJsonCompletionItems,
+	gorm: () => getGormCompletionItems(),
+	validate: () => getValidateCompletionItems(),
+	form: getXMLCompletionItems,
+	env: getEnvCompletionItems,
+	redis: getRedisCompletionItems,
+	binding: () => getGinBindingCompletionItems(),
+	xml: getXMLCompletionItems,
+	bun: getBunCompletionItems,
+	yaml: getYAMLCompletionItems,
+	toml: gettomlCompletionItems,
+	hcl: getHCLCompletionItems,
+	msgpack: getMsgPackCompletionItems,
+	bson: getBsonCompletionItems,
+	dynamodbav: getDynamoDBCompletionItems,
+	conform: getConformCompletionItems,
+	schema: getSchemaCompletionItems,
+});
+
 export const getTagSpecificSuggestions = (
 	tagType: string,
 	document: vscode.TextDocument,
 	position: vscode.Position,
 ): vscode.CompletionItem[] => {
-	try {
-		switch (tagType) {
-			case "json":
-				return getJsonCompletionItems(document, position);
-			case "gorm":
-				return getGormCompletionItems();
-			case "validate":
-				return getValidateCompletionItems();
-			case "form":
-				return getXMLCompletionItems(document, position);
-			case "env":
-				return getEnvCompletionItems(document, position);
-			case "redis":
-				return getRedisCompletionItems(document, position);
-			case "binding":
-				return getGinBindingCompletionItems();
-			case "xml":
-				return getXMLCompletionItems(document, position);
-			case "bun":
-				return getBunCompletionItems(document, position);
-			case "yaml":
-				return getYAMLCompletionItems(document, position);
-			case "toml":
-				return gettomlCompletionItems(document, position);
-			case "hcl":
-				return getHCLCompletionItems(document, position);
-			case "msgpack":
-				return getMsgPackCompletionItems(document, position);
-			case "bson":
-				return getBsonCompletionItems(document, position);
-			case "dynamodbav":
-				return getDynamoDBCompletionItems(document, position);
-			case "conform":
-				return getConformCompletionItems(document, position);
-			case "schema":
-				return getSchemaCompletionItems(document, position);
-			default:
-				return [];
-		}
-	} catch (error) {
-		return [];
-	}
+	const handler = completionHandlers[tagType];
+	return handler ? handler(document, position) : [];
 };

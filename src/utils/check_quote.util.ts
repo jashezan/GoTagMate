@@ -11,6 +11,8 @@
  * - `tagValue`: a string representing the content inside the quotes if a match was found, or `null` if
  * no match was found
  */
+const QUOTE_PATTERN =
+	/(env|gorm|validate|json|redis|binding|xml|yaml|form|toml|hcl|msgpack|bson|dynamodbav|bun|conform|schema):"([^"]*)$/;
 export const checkInsideQuotes = (
 	linePrefix: string,
 ): {
@@ -18,27 +20,9 @@ export const checkInsideQuotes = (
 	tagType: string | null;
 	tagValue: string | null;
 } => {
-	try {
-		const pattern =
-			/(env|gorm|validate|json|redis|binding|xml|yaml|form|toml|hcl|msgpack|bson|dynamodbav|bun|conform|schema):"([^"]*)$/;
-		const match = linePrefix.match(pattern);
-		if (match) {
-			return {
-				isMatched: true,
-				tagType: match[1], // e.g., "json"
-				tagValue: match[2], // Content inside quotes
-			};
-		}
-		return {
-			isMatched: false,
-			tagType: null,
-			tagValue: null,
-		};
-	} catch (error) {
-		return {
-			isMatched: false,
-			tagType: null,
-			tagValue: null,
-		};
+	const match = linePrefix.match(QUOTE_PATTERN);
+	if (match) {
+		return { isMatched: true, tagType: match[1], tagValue: match[2] };
 	}
+	return { isMatched: false, tagType: null, tagValue: null };
 };
