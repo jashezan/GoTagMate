@@ -19,7 +19,8 @@ export const checkInsideQuotes = (
 	tagValue: string | null;
 } => {
 	try {
-		const pattern = /(env|gorm|validate|json|redis|binding|xml|yaml|form):"([^"]*)$/;
+		const pattern =
+			/(env|gorm|validate|json|redis|binding|xml|yaml|form):"([^"]*)$/;
 		const match = linePrefix.match(pattern);
 		if (match) {
 			return {

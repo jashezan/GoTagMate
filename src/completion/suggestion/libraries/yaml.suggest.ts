@@ -1,10 +1,10 @@
 import type * as vscode from "vscode";
 
 import type { ITagList } from "../../../tags/tag.type";
+import { fetchYAMLKeywords } from "../../../tags/yaml.tag";
 import { createCompletionItem } from "../../../utils/completion_item.util";
 import { getFieldName } from "../../../utils/field_name.util";
 import { addFieldSuggestions } from "../../case_completion.provider";
-import { fetchYAMLKeywords } from "../../../tags/yaml.tag";
 
 /**
  * The function `getXMLCompletionItems` returns completion items for XML based on YAML keywords and

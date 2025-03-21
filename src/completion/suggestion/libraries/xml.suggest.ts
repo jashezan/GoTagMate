@@ -1,6 +1,6 @@
 import type * as vscode from "vscode";
-import { fetchXMLKeywords } from "../../../tags/xml.tag";
 import type { ITagList } from "../../../tags/tag.type";
+import { fetchXMLKeywords } from "../../../tags/xml.tag";
 import { createCompletionItem } from "../../../utils/completion_item.util";
 import { getFieldName } from "../../../utils/field_name.util";
 import { addFieldSuggestions } from "../../case_completion.provider";
@@ -42,7 +42,7 @@ export const getXMLCompletionItems = (
 		addFieldSuggestions(xmlSuggestions, fieldName, "xml", [
 			"snake_case",
 			"camelCase",
-			"PascalCase"
+			"PascalCase",
 		]);
 	}
 

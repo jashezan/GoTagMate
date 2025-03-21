@@ -1,9 +1,9 @@
 import type { ITag } from "./tag.type";
 
-
 export const fetchYAMLKeywords: ITag = {
 	keyword: "yaml",
-	description: "The yaml package enables Go programs to comfortably encode and decode YAML values.",
+	description:
+		"The yaml package enables Go programs to comfortably encode and decode YAML values.",
 	library_link: ["gopkg.in/yaml.v3"], // Assuming a common YAML package in Go
 	version: "v3.0.1",
 	last_published: "May 27, 2022",
