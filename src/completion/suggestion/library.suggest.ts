@@ -136,7 +136,9 @@ const tags: Tag[] = [
 		detail: "Emits the field as a commented-out value when set to 'true', library: github.com/pelletier/go-toml",
 		insertText: 'commented:"$1"',
 		triggerSuggest: false,
-		documentation: ['toml:"db" commented:"true" comment:"not used anymore"'],
+		documentation: [
+			'toml:"db" commented:"true" comment:"not used anymore"',
+		],
 	},
 	{
 		label: "default",
@@ -144,7 +146,7 @@ const tags: Tag[] = [
 		insertText: 'default:"$1"',
 		triggerSuggest: false,
 		documentation: ['toml:"user" default:"guest"'],
-	}
+	},
 ];
 
 /**

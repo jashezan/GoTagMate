@@ -1,4 +1,4 @@
-import type * as vscode from "vscode" ;
+import type * as vscode from "vscode";
 import type { ITagList } from "../../../tags/tag.type";
 import { fetchTOMLKeywords } from "../../../tags/toml.tag";
 import { createCompletionItem } from "../../../utils/completion_item.util";
