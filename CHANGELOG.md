@@ -5,13 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## Unreleased
 
+## 1.0.0
+
+Date: March 21, 2025
+
+* [Jubyer Ahmed Shezan (@jashezan)](https://github.com/jashezan)
+    * Added Full Support for [validate]()
+
 ## 0.0.1
 
 Date: March 18, 2025
 
 * [Jubyer Ahmed Shezan (@jashezan)](https://github.com/jashezan)
-    * Option to choose `gometalinter` as tool for linting [PR #294](https://github.com/Microsoft/vscode-go/pull/294)
-* [Jubyer Ahmed Shezan (@jashezan)](https://github.com/jashezan)
-    * Option to choose `gometalinter` as tool for linting [PR #294](https://github.com/Microsoft/vscode-go/pull/294)
-* [Jubyer Ahmed Shezan (@jashezan)](https://github.com/jashezan)
-    * Option to choose `gometalinter` as tool for linting [PR #294](https://github.com/Microsoft/vscode-go/pull/294)
+    * Primarily published the extension with `gorm` (full), `json`(full) and `validate` (partial) support.

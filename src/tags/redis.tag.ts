@@ -11,7 +11,8 @@ export const fetchRedisKeywords: ITag = {
 	tag_list: [
 		{
 			tag_name: "-",
-			tag_description: "Ignore field in Redis",
+			tag_description:
+				"Ignore field in Redis and will not be stored in Redis.",
 			tag_usage: ['redis:"-"'],
 		},
 	],
