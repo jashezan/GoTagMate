@@ -1,6 +1,7 @@
 import type * as vscode from "vscode";
 import { getBsonCompletionItems } from "./libraries/bson.suggest";
 import { getBunCompletionItems } from "./libraries/bun.suggest";
+import { getConformCompletionItems } from "./libraries/conform.suggest";
 import { getDynamoDBCompletionItems } from "./libraries/dynamodb.suggest";
 import { getEnvCompletionItems } from "./libraries/env.suggest";
 import { getGinBindingCompletionItems } from "./libraries/gin_binding.suggest";
@@ -70,6 +71,8 @@ export const getTagSpecificSuggestions = (
 				return getBsonCompletionItems(document, position);
 			case "dynamodbav":
 				return getDynamoDBCompletionItems(document, position);
+			case "conform":
+				return getConformCompletionItems(document, position);
 			default:
 				return [];
 		}

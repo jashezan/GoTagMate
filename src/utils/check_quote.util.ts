@@ -20,7 +20,7 @@ export const checkInsideQuotes = (
 } => {
 	try {
 		const pattern =
-			/(env|gorm|validate|json|redis|binding|xml|yaml|form|toml|hcl|msgpack|bson|dynamodbav|bun):"([^"]*)$/;
+			/(env|gorm|validate|json|redis|binding|xml|yaml|form|toml|hcl|msgpack|bson|dynamodbav|bun|conform):"([^"]*)$/;
 		const match = linePrefix.match(pattern);
 		if (match) {
 			return {
