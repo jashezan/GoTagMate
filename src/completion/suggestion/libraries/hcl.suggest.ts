@@ -5,7 +5,6 @@ import { createCompletionItem } from "../../../utils/completion_item.util";
 import { getFieldName } from "../../../utils/field_name.util";
 import { addFieldSuggestions } from "../../case_completion.provider";
 
-
 export const getHCLCompletionItems = (
 	document: vscode.TextDocument,
 	position: vscode.Position,

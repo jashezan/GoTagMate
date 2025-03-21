@@ -2,13 +2,13 @@ import type * as vscode from "vscode";
 import { getEnvCompletionItems } from "./libraries/env.suggest";
 import { getGinBindingCompletionItems } from "./libraries/gin_binding.suggest";
 import { getGormCompletionItems } from "./libraries/gorm.suggest";
+import { getHCLCompletionItems } from "./libraries/hcl.suggest";
 import { getJsonCompletionItems } from "./libraries/json.suggest";
 import { getRedisCompletionItems } from "./libraries/redis.suggest";
 import { gettomlCompletionItems } from "./libraries/toml.suggest";
 import { getValidateCompletionItems } from "./libraries/validate.suggest";
 import { getXMLCompletionItems } from "./libraries/xml.suggest";
 import { getYAMLCompletionItems } from "./libraries/yaml.suggest";
-import { getHCLCompletionItems } from "./libraries/hcl.suggest";
 
 /**
  * The function `getTagSpecificSuggestions` returns completion items based on the specified tag type
