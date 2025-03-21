@@ -1,5 +1,6 @@
 import type * as vscode from "vscode";
 import { getBsonCompletionItems } from "./libraries/bson.suggest";
+import { getBunCompletionItems } from "./libraries/bun.suggest";
 import { getDynamoDBCompletionItems } from "./libraries/dynamodb.suggest";
 import { getEnvCompletionItems } from "./libraries/env.suggest";
 import { getGinBindingCompletionItems } from "./libraries/gin_binding.suggest";
@@ -55,6 +56,8 @@ export const getTagSpecificSuggestions = (
 				return getGinBindingCompletionItems();
 			case "xml":
 				return getXMLCompletionItems(document, position);
+			case "bun":
+				return getBunCompletionItems(document, position);
 			case "yaml":
 				return getYAMLCompletionItems(document, position);
 			case "toml":
