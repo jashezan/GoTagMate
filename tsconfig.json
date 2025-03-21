@@ -1,10 +1,13 @@
 {
 	"compilerOptions": {
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
 		"lib": ["es2020"],
 		"module": "commonjs",
 		"outDir": "out",
+		"removeComments": true,
 		"rootDir": "src",
-		"sourceMap": true,
+		"sourceMap": false,
 		"strict": true,
 		"target": "es2020"
 	},
