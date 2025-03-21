@@ -17,13 +17,13 @@
 		"onDebugResolve:gop",
 		"onWebviewPanel:welcomeGo"
 	],
-	"bugs": {
-		"url": "https://github.com/jashezan/GoTagMate/issues"
-	},
 	"author": {
 		"email": "jashezan@gmail.com",
 		"name": "Jubyer Ahmed Shezan",
 		"url": "https://github.com/jashezan"
+	},
+	"bugs": {
+		"url": "https://github.com/jashezan/GoTagMate/issues"
 	},
 	"categories": ["Programming Languages", "Snippets", "Languages"],
 	"contributes": {
@@ -147,7 +147,7 @@
 		"lint-staged": "^15.5.0",
 		"typescript": "^5.8.2"
 	},
-	"displayName": "GoTagMate",
+	"displayName": "Go Tag Mate",
 	"enableTelemetry": false,
 	"engines": {
 		"vscode": "^1.73.0"
@@ -167,10 +167,10 @@
 		]
 	},
 	"main": "./out/extension.js",
-	"name": "gotagmate",
+	"name": "Go Tag Mate",
 	"preview": false,
 	"pricing": "Free",
-	"private": true,
+	"private": false,
 	"publisher": "jashezan",
 	"qna": "marketplace",
 	"repository": {
