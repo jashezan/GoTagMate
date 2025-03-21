@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { findStructBounds } from "./struct_bound.util";
 
 /**
  * The function `isInsideGoStruct` checks if the current position in a TypeScript document is inside a
@@ -15,12 +16,16 @@ export const isInsideGoStruct = (
 	document: vscode.TextDocument,
 	position: vscode.Position,
 ): boolean => {
-	const textBefore = document.getText(
-		new vscode.Range(new vscode.Position(0, 0), position),
-	);
-	const structOpen = textBefore.lastIndexOf("struct {");
-	const structClose = textBefore.lastIndexOf("}");
-	return (
-		structOpen !== -1 && (structClose === -1 || structClose < structOpen)
-	);
+	try {
+		const textBefore = document.getText(
+			new vscode.Range(new vscode.Position(0, 0), position),
+		);
+		const {structOpen, structClose} = findStructBounds(textBefore);
+		return (
+			structOpen !== -1 &&
+			(structClose === -1 || structClose < structOpen)
+		);
+	} catch (error) {
+		return false;
+	}
 };
