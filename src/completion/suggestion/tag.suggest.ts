@@ -1,10 +1,12 @@
 import type * as vscode from "vscode";
 import { getEnvCompletionItems } from "./libraries/env.suggest";
+import { getGinBindingCompletionItems } from "./libraries/gin_binding.suggest";
 import { getGormCompletionItems } from "./libraries/gorm.suggest";
 import { getJsonCompletionItems } from "./libraries/json.suggest";
 import { getRedisCompletionItems } from "./libraries/redis.suggest";
 import { getValidateCompletionItems } from "./libraries/validate.suggest";
-import { getGinBindingCompletionItems } from "./libraries/gin_binding.suggest";
+import { getXMLCompletionItems } from "./libraries/xml.suggest";
+import { getYAMLCompletionItems } from "./libraries/yaml.suggest";
 
 /**
  * The function `getTagSpecificSuggestions` returns completion items based on the specified tag type
@@ -38,12 +40,18 @@ export const getTagSpecificSuggestions = (
 				return getGormCompletionItems();
 			case "validate":
 				return getValidateCompletionItems();
+			case "form":
+				return getXMLCompletionItems(document, position);
 			case "env":
 				return getEnvCompletionItems(document, position);
 			case "redis":
 				return getRedisCompletionItems(document, position);
 			case "binding":
 				return getGinBindingCompletionItems();
+			case "xml":
+				return getXMLCompletionItems(document, position);
+			case "yaml":
+				return getYAMLCompletionItems(document, position);
 			default:
 				return [];
 		}

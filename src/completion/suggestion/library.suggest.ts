@@ -96,6 +96,27 @@ const tags: Tag[] = [
 		triggerSuggest: true,
 		documentation: ['redis:"-"'],
 	},
+	{
+		label: "xml",
+		detail: "XML tags for struct fields",
+		insertText: 'xml:"$1"',
+		triggerSuggest: true,
+		documentation: ['xml:"name"'],
+	},
+	{
+		label: "yaml",
+		detail: "YAML tags for struct fields",
+		insertText: 'yaml:"$1"',
+		triggerSuggest: true,
+		documentation: ['yaml:"name"'],
+	},
+	{
+		label: "form",
+		detail: "FORM tags for struct fields",
+		insertText: 'form:"$1"',
+		triggerSuggest: true,
+		documentation: ['form:"name"'],
+	},
 ];
 
 /**
