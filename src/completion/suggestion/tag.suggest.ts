@@ -5,6 +5,7 @@ import { getConformCompletionItems } from "./libraries/conform.suggest";
 import { getDynamoDBCompletionItems } from "./libraries/dynamodb.suggest";
 import { getEnvCompletionItems } from "./libraries/env.suggest";
 import { getGinBindingCompletionItems } from "./libraries/gin_binding.suggest";
+import { getSchemaCompletionItems } from "./libraries/gorilla_schema.suggest";
 import { getGormCompletionItems } from "./libraries/gorm.suggest";
 import { getHCLCompletionItems } from "./libraries/hcl.suggest";
 import { getJsonCompletionItems } from "./libraries/json.suggest";
@@ -73,6 +74,8 @@ export const getTagSpecificSuggestions = (
 				return getDynamoDBCompletionItems(document, position);
 			case "conform":
 				return getConformCompletionItems(document, position);
+			case "schema":
+				return getSchemaCompletionItems(document, position);
 			default:
 				return [];
 		}

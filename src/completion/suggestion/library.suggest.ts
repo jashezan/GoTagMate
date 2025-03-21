@@ -39,6 +39,13 @@ const tags: Tag[] = [
 		documentation: ['conform:"field_name"'],
 	},
 	{
+		label: "schema",
+		detail: "Schema tags for struct fields",
+		insertText: 'schema:"$1"',
+		triggerSuggest: true,
+		documentation: ['schema:"field_name"'],
+	},
+	{
 		label: "env",
 		detail: "ENV tags for struct fields",
 		insertText: 'env:"$1"',
