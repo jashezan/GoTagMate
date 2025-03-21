@@ -5,6 +5,8 @@ export const fetchEnvKeywords: ITag = {
 	description:
 		"A simple, zero-dependencies library to parse environment variables into structs",
 	library_link: ["github.com/caarlos0/env/v11"],
+	version: "11.3.1",
+	last_published: "Dec 20, 2024",
 	tag_list: [
 		{
 			tag_name: ",expand",
