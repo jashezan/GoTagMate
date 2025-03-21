@@ -5,6 +5,8 @@ export const fetchValidateKeywords: ITag = {
 	description:
 		"Go Struct and Field validation, including Cross Field, Cross Struct, Map, Slice and Array diving",
 	library_link: ["github.com/go-playground/validator/v10"],
+	version: "10.25.0",
+	last_published: "Feb 15, 2025",
 	tag_list: [
 		{
 			tag_name: "eqcsfield", // Fields
@@ -25,21 +27,21 @@ export const fetchValidateKeywords: ITag = {
 			],
 		},
 		{
-			tag_name: "fieldcontains", // Fields
+			tag_name: "containsfield", // Fields
 			tag_description:
 				"Checks whether the field contains the specified substring. Useful for ensuring certain keywords are present in input.",
 			tag_usage: [
-				'validate:"fieldcontains=@gmail.com"',
-				'validate:"fieldcontains=admin"',
+				'validate:"containsfield=@gmail.com"',
+				'validate:"containsfield=admin"',
 			],
 		},
 		{
-			tag_name: "fieldexcludes", // Fields
+			tag_name: "excludesfield", // Fields
 			tag_description:
 				"Ensures the field does not contain the specified substring. Helps to restrict unwanted values.",
 			tag_usage: [
-				'validate:"fieldexcludes=password"',
-				'validate:"fieldexcludes=forbidden"',
+				'validate:"excludesfield=password"',
+				'validate:"excludesfield=forbidden"',
 			],
 		},
 		{
@@ -189,13 +191,13 @@ export const fetchValidateKeywords: ITag = {
 			tag_usage: ['validate:"ip"', 'validate:"ip,required"'],
 		},
 		{
-			tag_name: "ip4_addr", // Networks
-			tag_description: "Field must be a valid IPv4 address.",
+			tag_name: "ip4_addr",
+			tag_description: "Field must be a valid, resolvable IPv4 address.",
 			tag_usage: ['validate:"ip4_addr"', 'validate:"ip4_addr,required"'],
 		},
 		{
-			tag_name: "ip6_addr", // Networks
-			tag_description: "Field must be a valid IPv6 address.",
+			tag_name: "ip6_addr",
+			tag_description: "Field must be a valid, resolvable IPv6 address.",
 			tag_usage: ['validate:"ip6_addr"', 'validate:"ip6_addr,required"'],
 		},
 		{
@@ -206,12 +208,12 @@ export const fetchValidateKeywords: ITag = {
 		},
 		{
 			tag_name: "tcp_addr", // Networks
-			tag_description: "Field must be a valid TCP address.",
+			tag_description: "Field must be a valid, resolvable TCP address.",
 			tag_usage: ['validate:"tcp_addr"', 'validate:"tcp_addr,required"'],
 		},
 		{
 			tag_name: "udp_addr", // Networks
-			tag_description: "Field must be a valid UDP address.",
+			tag_description: "Field must be a valid, resolvable UDP address.",
 			tag_usage: ['validate:"udp_addr"', 'validate:"udp_addr,required"'],
 		},
 		{
@@ -234,9 +236,9 @@ export const fetchValidateKeywords: ITag = {
 			tag_usage: ['validate:"url"', 'validate:"url,required"'],
 		},
 		{
-			tag_name: "http_url", // Networks
+			tag_name: "url", // Networks
 			tag_description: "Field must be a valid HTTP or HTTPS URL.",
-			tag_usage: ['validate:"http_url"', 'validate:"http_url,required"'],
+			tag_usage: ['validate:"url"', 'validate:"url,required"'],
 		},
 		{
 			tag_name: "urn_rfc2141", // Networks
@@ -461,20 +463,58 @@ export const fetchValidateKeywords: ITag = {
 			],
 		},
 		{
-			tag_name: "spicedb", // Format
+			tag_name: "spicedb",
 			tag_description:
-				"Field must be a valid SpiceDB ObjectID, permission, or type.",
+				"Field must be a valid SpiceDB ObjectID, permission, or type. Specify purpose with 'id', 'permission', or 'type' (defaults to 'id' if unspecified).",
 			tag_usage: [
-				'validate:"spicedb"',
-				'validate:"spicedb" json:"permission_id"',
+				'validate:"spicedb=id" // Validates as SpiceDB ObjectID',
+				'validate:"spicedb=permission" // Validates as SpiceDB permission',
+				'validate:"spicedb=type" // Validates as SpiceDB type',
 			],
 		},
 		{
+			tag_name: "tcp4_addr",
+			tag_description:
+				"Validates that the field contains a valid, resolvable IPv4 TCP address.",
+			tag_usage: ['validate:"tcp4_addr" // e.g., 192.168.1.1:8080'],
+		},
+		{
+			tag_name: "tcp6_addr",
+			tag_description:
+				"Validates that the field contains a valid, resolvable IPv6 TCP address.",
+			tag_usage: ['validate:"tcp6_addr" // e.g., [2001:db8::1]:8080'],
+		},
+		{
+			tag_name: "udp4_addr",
+			tag_description:
+				"Validates that the field contains a valid, resolvable IPv4 UDP address.",
+			tag_usage: ['validate:"udp4_addr" // e.g., 192.168.1.1:1234'],
+		},
+		{
+			tag_name: "udp6_addr",
+			tag_description:
+				"Validates that the field contains a valid, resolvable IPv6 UDP address.",
+			tag_usage: ['validate:"udp6_addr" // e.g., [2001:db8::1]:1234'],
+		},
+		{
+			tag_name: "ipv4",
+			tag_description:
+				"Validates that the field contains a valid IPv4 address (not necessarily resolvable).",
+			tag_usage: ['validate:"ipv4" // e.g., 192.168.1.1'],
+		},
+		{
+			tag_name: "ipv6",
+			tag_description:
+				"Validates that the field contains a valid IPv6 address (not necessarily resolvable).",
+			tag_usage: ['validate:"ipv6" // e.g., 2001:db8::1'],
+		},
+		{
 			tag_name: "datetime", // Format
-			tag_description: "Field must be a valid datetime string.",
+			tag_description:
+				"Field must be a valid datetime string matching the specified Go time format.",
 			tag_usage: [
-				'validate:"datetime"',
-				'validate:"datetime" json:"timestamp"',
+				'validate:"datetime=2006-01-02"',
+				'validate:"datetime=2006-01-02T15:04:05Z" json:"timestamp"',
 			],
 		},
 		{
@@ -482,15 +522,6 @@ export const fetchValidateKeywords: ITag = {
 			tag_description:
 				"Field must be a valid E.164 formatted phone number, used internationally.",
 			tag_usage: ['validate:"e164"', 'validate:"e164" json:"phone"'],
-		},
-		{
-			tag_name: "ein", // Format
-			tag_description:
-				"Field must be a valid U.S. Employer Identification Number (EIN).",
-			tag_usage: [
-				'validate:"ein"',
-				'validate:"ein" json:"company_tax_id"',
-			],
 		},
 		{
 			tag_name: "email", // Format
@@ -526,40 +557,42 @@ export const fetchValidateKeywords: ITag = {
 		},
 		{
 			tag_name: "lt", // Comparisons
-			tag_description: "Field must be less than the specified value.",
+			tag_description:
+				"Field must be less than the specified value. For time.Time, ensures the value is before time.Now.UTC() when used without a parameter.",
 			tag_usage: [
 				'validate:"lt=100"',
 				'validate:"lt=18" json:"age"',
-				'validate:"lt=5000" json:"price"',
+				'validate:"lt" json:"creation_time" // For time.Time, before now',
 			],
 		},
 		{
 			tag_name: "lte", // Comparisons
 			tag_description:
-				"Field must be less than or equal to the specified value.",
+				"Field must be less than or equal to the specified value. For time.Time, ensures the value is at or before time.Now.UTC() when used without a parameter.",
 			tag_usage: [
 				'validate:"lte=100"',
 				'validate:"lte=21" json:"age"',
-				'validate:"lte=1000" json:"discount"',
+				'validate:"lte" json:"deadline" // For time.Time, at or before now',
 			],
 		},
 		{
 			tag_name: "gt", // Comparisons
-			tag_description: "Field must be greater than the specified value.",
+			tag_description:
+				"Field must be greater than the specified value. For time.Time, ensures the value is after time.Now.UTC() when used without a parameter.",
 			tag_usage: [
 				'validate:"gt=10"',
 				'validate:"gt=18" json:"age"',
-				'validate:"gt=0" json:"balance"',
+				'validate:"gt" json:"expiration" // For time.Time, after now',
 			],
 		},
 		{
 			tag_name: "gte", // Comparisons
 			tag_description:
-				"Field must be greater than or equal to the specified value.",
+				"Field must be greater than or equal to the specified value. For time.Time, ensures the value is at or after time.Now.UTC() when used without a parameter.",
 			tag_usage: [
 				'validate:"gte=18"',
 				'validate:"gte=21" json:"drinking_age"',
-				'validate:"gte=500" json:"salary"',
+				'validate:"gte" json:"start_time" // For time.Time, at or after now',
 			],
 		},
 		{
@@ -791,10 +824,10 @@ export const fetchValidateKeywords: ITag = {
 		{
 			tag_name: "unique", // Other
 			tag_description:
-				"Validates that the field's value is unique within a collection or dataset. This is commonly used to ensure no duplicate values exist, such as unique usernames or email addresses.",
+				"Validates that the field's values (arrays, slices, maps) or a struct field's values have no duplicates. Does not check database uniqueness.",
 			tag_usage: [
-				'validate:"unique" // Ensures the field value is unique in the database (e.g., username)',
-				'validate:"unique" // Ensures the field value is unique in a slice or array',
+				'validate:"unique" // Ensures no duplicates in an array/slice/map',
+				'validate:"unique=username" // Ensures no duplicate username values in a slice of structs',
 			],
 		},
 		{
@@ -814,10 +847,283 @@ export const fetchValidateKeywords: ITag = {
 			],
 		},
 		{
-			tag_name: "currency_code", // Aliases
+			tag_name: "-",
 			tag_description:
-				"Validates that the fields value is a valid currency code, ",
-			tag_usage: ['validate:"currency_code" // Aliases for iso4217'],
+				"Tells the validator to skip this field entirely. Useful for ignoring embedded structs or fields not requiring validation.",
+			tag_usage: ['validate:"-" // Skips validation for this field'],
+		},
+		{
+			tag_name: "|",
+			tag_description:
+				"Allows multiple validators to be combined with an 'or' condition. The field is valid if it satisfies any of the specified validators.",
+			tag_usage: [
+				'validate:"rgb|rgba" // Accepts either rgb or rgba format',
+				'validate:"email|hostname" // Accepts either email or hostname',
+			],
+		},
+		{
+			tag_name: "structonly",
+			tag_description:
+				"Validates the nested struct itself (e.g., required, omitempty) but skips its fields. Useful when you only need to check struct assignment.",
+			tag_usage: [
+				'validate:"structonly" // Validates struct presence only',
+			],
+		},
+		{
+			tag_name: "nostructlevel",
+			tag_description:
+				"Validates nested struct fields but skips struct-level validations. Opposite of structonly.",
+			tag_usage: [
+				'validate:"nostructlevel" // Skips struct-level validation',
+			],
+		},
+		{
+			tag_name: "omitempty",
+			tag_description:
+				"Skips validation if the field is empty (zero value), preventing further validation like min/max unless a value is set.",
+			tag_usage: [
+				'validate:"omitempty,min=5" // Skips min if empty',
+				'validate:"omitempty,email" // Skips email check if empty',
+			],
+		},
+		{
+			tag_name: "omitnil",
+			tag_description:
+				"Skips validation if the field is nil. Similar to omitempty but specifically for nil values.",
+			tag_usage: ['validate:"omitnil,len=10" // Skips len check if nil'],
+		},
+		{
+			tag_name: "dive",
+			tag_description:
+				"Dives into slices, arrays, or maps to validate their elements with subsequent tags. Supports nested validation with multiple dive tags.",
+			tag_usage: [
+				'validate:"dive,required" // Validates each element is non-empty',
+				'validate:"dive,dive,len=5" // Validates nested slice elements',
+			],
+		},
+		{
+			tag_name: "keys",
+			tag_description:
+				"Used with 'endkeys' after 'dive' to validate map keys (not values). Must be paired with 'endkeys'.",
+			tag_usage: [
+				'validate:"dive,keys,eq=1|endkeys,required" // Keys must be 1, values required',
+			],
+		},
+		{
+			tag_name: "oneofci",
+			tag_description:
+				"Validates that the field's value is one of the specified options (case-insensitive). Only for strings.",
+			tag_usage: [
+				'validate:"oneofci=red GREEN blue" // Accepts "red", "Red", "GREEN", etc.',
+			],
+		},
+		{
+			tag_name: "rgb",
+			tag_description:
+				"Validates that the field contains a valid RGB color string.",
+			tag_usage: ['validate:"rgb" // e.g., rgb(255, 0, 0)'],
+		},
+		{
+			tag_name: "rgba",
+			tag_description:
+				"Validates that the field contains a valid RGBA color string.",
+			tag_usage: ['validate:"rgba" // e.g., rgba(255, 0, 0, 0.5)'],
+		},
+		{
+			tag_name: "hsl",
+			tag_description:
+				"Validates that the field contains a valid HSL color string.",
+			tag_usage: ['validate:"hsl" // e.g., hsl(120, 100%, 50%)'],
+		},
+		{
+			tag_name: "hsla",
+			tag_description:
+				"Validates that the field contains a valid HSLA color string.",
+			tag_usage: ['validate:"hsla" // e.g., hsla(120, 100%, 50%, 0.5)'],
+		},
+		{
+			tag_name: "json",
+			tag_description:
+				"Validates that the field contains a valid JSON string.",
+			tag_usage: ['validate:"json" // e.g., {"key": "value"}'],
+		},
+		{
+			tag_name: "jwt",
+			tag_description:
+				"Validates that the field contains a valid JSON Web Token (JWT).",
+			tag_usage: [
+				'validate:"jwt" // e.g., eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+			],
+		},
+		{
+			tag_name: "latitude",
+			tag_description:
+				"Validates that the field contains a valid latitude value.",
+			tag_usage: ['validate:"latitude" // e.g., 40.7128'],
+		},
+		{
+			tag_name: "longitude",
+			tag_description:
+				"Validates that the field contains a valid longitude value.",
+			tag_usage: ['validate:"longitude" // e.g., -74.0060'],
+		},
+		{
+			tag_name: "ssn",
+			tag_description:
+				"Validates that the field contains a valid U.S. Social Security Number.",
+			tag_usage: ['validate:"ssn" // e.g., 123-45-6789'],
+		},
+		{
+			tag_name: "uuid",
+			tag_description:
+				"Validates that the field contains a valid UUID (lowercase only).",
+			tag_usage: [
+				'validate:"uuid" // e.g., 550e8400-e29b-41d4-a716-446655440000',
+			],
+		},
+		{
+			tag_name: "uuid3",
+			tag_description:
+				"Validates that the field contains a valid version 3 UUID (lowercase only).",
+			tag_usage: ['validate:"uuid3"'],
+		},
+		{
+			tag_name: "uuid4",
+			tag_description:
+				"Validates that the field contains a valid version 4 UUID (lowercase only).",
+			tag_usage: ['validate:"uuid4"'],
+		},
+		{
+			tag_name: "uuid5",
+			tag_description:
+				"Validates that the field contains a valid version 5 UUID (lowercase only).",
+			tag_usage: ['validate:"uuid5"'],
+		},
+		{
+			tag_name: "ulid",
+			tag_description:
+				"Validates that the field contains a valid ULID (Universally Unique Lexicographically Sortable Identifier).",
+			tag_usage: ['validate:"ulid" // e.g., 01ARZ3NDEKTSV4RRFFQ69G5FAV'],
+		},
+		{
+			tag_name: "isbn",
+			tag_description:
+				"Validates that the field contains a valid ISBN (10 or 13). Full meaning of ISBN is International Standard Book Number.",
+			tag_usage: [
+				'validate:"isbn" // e.g., 0-7475-3269-9 or 978-0-7475-3269-9',
+			],
+		},
+		{
+			tag_name: "isbn10",
+			tag_description:
+				"Validates that the field contains a valid ISBN-10. Full meaning of ISBN-10 is International Standard Book Number.",
+			tag_usage: ['validate:"isbn10" // e.g., 0-7475-3269-9'],
+		},
+		{
+			tag_name: "isbn13",
+			tag_description:
+				"Validates that the field contains a valid ISBN-13. Full meaning of ISBN-13 is International Standard Book Number.",
+			tag_usage: ['validate:"isbn13" // e.g., 978-0-7475-3269-9'],
+		},
+		{
+			tag_name: "base32",
+			tag_description:
+				"Validates that the field contains a valid Base32-encoded string.",
+			tag_usage: ['validate:"base32" // e.g., MZXW6YTB'],
+		},
+		{
+			tag_name: "html",
+			tag_description:
+				"Validates that the field contains a valid HTML element tag.",
+			tag_usage: ['validate:"html" // e.g., <div>'],
+		},
+		{
+			tag_name: "html_encoded",
+			tag_description:
+				"Validates that the field contains a valid HTML-encoded character reference.",
+			tag_usage: ['validate:"html_encoded" // e.g., &#39; or &#x27;'],
+		},
+		{
+			tag_name: "url_encoded",
+			tag_description:
+				"Validates that the field contains a valid URL-encoded (percent-encoded) string.",
+			tag_usage: ['validate:"url_encoded" // e.g., hello%20world'],
+		},
+		{
+			tag_name: "timezone",
+			tag_description:
+				"Validates that the field contains a valid timezone string (non-empty, not 'Local').",
+			tag_usage: ['validate:"timezone" // e.g., America/New_York'],
+		},
+		{
+			tag_name: "semver",
+			tag_description:
+				"Validates that the field contains a valid Semantic Version (semver) string.",
+			tag_usage: ['validate:"semver" // e.g., 1.2.3'],
+		},
+		{
+			tag_name: "cve",
+			tag_description:
+				"Validates that the field contains a valid CVE (Common Vulnerabilities and Exposures) identifier.",
+			tag_usage: ['validate:"cve" // e.g., CVE-2021-44228'],
+		},
+		{
+			tag_name: "luhn_checksum",
+			tag_description:
+				"Validates that the field contains a valid Luhn checksum (e.g., for credit card numbers).",
+			tag_usage: ['validate:"luhn_checksum" // e.g., 4539148803436467'],
+		},
+		{
+			tag_name: "dns_rfc1035_label",
+			tag_description:
+				"Validates that the field contains a valid DNS label per RFC 1035. Full meaning of DNS is Domain Name System.",
+			tag_usage: [
+				'validate:"dns_rfc1035_label" // e.g., example: 3(www) + 1(.) + 3(com) = 7',
+			],
+		},
+		{
+			tag_name: "iso3166_1_alpha2",
+			tag_description:
+				"Validates that the field contains a valid ISO 3166-1 alpha-2 country code.",
+			tag_usage: ['validate:"iso3166_1_alpha2" // e.g., US'],
+		},
+		{
+			tag_name: "iso3166_1_alpha3",
+			tag_description:
+				"Validates that the field contains a valid ISO 3166-1 alpha-3 country code.",
+			tag_usage: ['validate:"iso3166_1_alpha3" // e.g., USA'],
+		},
+		{
+			tag_name: "iso3166_1_alpha_numeric",
+			tag_description:
+				"Validates that the field contains a valid ISO 3166-1 alpha-numeric country code.",
+			tag_usage: ['validate:"iso3166_1_alpha_numeric" // e.g., 840'],
+		},
+		{
+			tag_name: "uuid_rfc4122",
+			tag_description:
+				"Validates that the field contains a valid UUID per RFC 4122 (accepts uppercase and lowercase).",
+			tag_usage: [
+				'validate:"uuid_rfc4122" // e.g., 550E8400-E29B-41D4-A716-446655440000',
+			],
+		},
+		{
+			tag_name: "uuid3_rfc4122",
+			tag_description:
+				"Validates that the field contains a valid version 3 UUID per RFC 4122 (accepts uppercase and lowercase).",
+			tag_usage: ['validate:"uuid3_rfc4122"'],
+		},
+		{
+			tag_name: "uuid4_rfc4122",
+			tag_description:
+				"Validates that the field contains a valid version 4 UUID per RFC 4122 (accepts uppercase and lowercase).",
+			tag_usage: ['validate:"uuid4_rfc4122"'],
+		},
+		{
+			tag_name: "uuid5_rfc4122",
+			tag_description:
+				"Validates that the field contains a valid version 5 UUID per RFC 4122 (accepts uppercase and lowercase).",
+			tag_usage: ['validate:"uuid5_rfc4122"'],
 		},
 	],
 };
