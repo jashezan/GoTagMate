@@ -20,7 +20,7 @@ export const isInsideGoStruct = (
 		const textBefore = document.getText(
 			new vscode.Range(new vscode.Position(0, 0), position),
 		);
-		const {structOpen, structClose} = findStructBounds(textBefore);
+		const { structOpen, structClose } = findStructBounds(textBefore);
 		return (
 			structOpen !== -1 &&
 			(structClose === -1 || structClose < structOpen)
