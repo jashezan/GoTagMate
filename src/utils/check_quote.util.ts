@@ -1,3 +1,5 @@
+import { QUOTE_PATTERN } from "../constants/trigger_chars.const";
+
 /**
  * The function `checkInsideQuotes` checks if a given string contains a specific tag type followed by
  * content inside double quotes.
@@ -11,8 +13,6 @@
  * - `tagValue`: a string representing the content inside the quotes if a match was found, or `null` if
  * no match was found
  */
-const QUOTE_PATTERN =
-	/(env|gorm|validate|json|redis|binding|xml|yaml|form|toml|hcl|msgpack|bson|dynamodbav|bun|conform|schema):"([^"]*)$/;
 export const checkInsideQuotes = (
 	linePrefix: string,
 ): {

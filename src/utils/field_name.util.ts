@@ -16,11 +16,7 @@ export const getFieldName = (
 	document: vscode.TextDocument,
 	position: vscode.Position,
 ): string | undefined => {
-	try {
-		const lineText = document.lineAt(position).text;
-		const fieldMatch = lineText.match(/(\w+)\s+\w+/);
-		return fieldMatch ? fieldMatch[1] : undefined;
-	} catch (error) {
-		return undefined;
-	}
+	const lineText = document.lineAt(position).text;
+	const fieldMatch = lineText.match(/(\w+)\s+\w+/);
+	return fieldMatch ? fieldMatch[1] : undefined;
 };
