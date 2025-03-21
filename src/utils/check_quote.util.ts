@@ -19,7 +19,7 @@ export const checkInsideQuotes = (
 	tagValue: string | null;
 } => {
 	try {
-		const pattern = /(env|gorm|validate|json|redis):"([^"]*)$/;
+		const pattern = /(env|gorm|validate|json|redis|binding):"([^"]*)$/;
 		const match = linePrefix.match(pattern);
 		if (match) {
 			return {

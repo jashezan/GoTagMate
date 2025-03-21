@@ -4,6 +4,7 @@ import { getGormCompletionItems } from "./libraries/gorm.suggest";
 import { getJsonCompletionItems } from "./libraries/json.suggest";
 import { getRedisCompletionItems } from "./libraries/redis.suggest";
 import { getValidateCompletionItems } from "./libraries/validate.suggest";
+import { getGinBindingCompletionItems } from "./libraries/gin_binding.suggest";
 
 /**
  * The function `getTagSpecificSuggestions` returns completion items based on the specified tag type
@@ -41,6 +42,8 @@ export const getTagSpecificSuggestions = (
 				return getEnvCompletionItems(document, position);
 			case "redis":
 				return getRedisCompletionItems(document, position);
+			case "binding":
+				return getGinBindingCompletionItems();
 			default:
 				return [];
 		}

@@ -83,6 +83,13 @@ const tags: Tag[] = [
 		documentation: ['validate:"required"'],
 	},
 	{
+		label: "binding",
+		detail: "Gin Validation (Binding) tags for struct fields",
+		insertText: 'binding:"$1"',
+		triggerSuggest: true,
+		documentation: ['binding:"required"'],
+	},
+	{
 		label: "redis",
 		detail: "Redis tags for struct fields",
 		insertText: 'redis:"$1"',
