@@ -132,6 +132,13 @@ const tags: Tag[] = [
 		documentation: ['hcl:"name"'],
 	},
 	{
+		label: "msgpack",
+		detail: "MsgPack tags for struct fields",
+		insertText: 'msgpack:"$1"',
+		triggerSuggest: true,
+		documentation: ['msgpack:"name"'],
+	},
+	{
 		label: "comment",
 		detail: "Adds a # comment on the same line as the field in the TOML output, library: github.com/pelletier/go-toml",
 		insertText: 'comment:"$1"',

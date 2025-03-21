@@ -4,6 +4,7 @@ import { getGinBindingCompletionItems } from "./libraries/gin_binding.suggest";
 import { getGormCompletionItems } from "./libraries/gorm.suggest";
 import { getHCLCompletionItems } from "./libraries/hcl.suggest";
 import { getJsonCompletionItems } from "./libraries/json.suggest";
+import { getMsgPackCompletionItems } from "./libraries/msgpack.suggest";
 import { getRedisCompletionItems } from "./libraries/redis.suggest";
 import { gettomlCompletionItems } from "./libraries/toml.suggest";
 import { getValidateCompletionItems } from "./libraries/validate.suggest";
@@ -58,6 +59,8 @@ export const getTagSpecificSuggestions = (
 				return gettomlCompletionItems(document, position);
 			case "hcl":
 				return getHCLCompletionItems(document, position);
+			case "msgpack":
+				return getMsgPackCompletionItems(document, position);
 			default:
 				return [];
 		}
