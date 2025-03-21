@@ -7,6 +7,7 @@ import { getRedisCompletionItems } from "./libraries/redis.suggest";
 import { getValidateCompletionItems } from "./libraries/validate.suggest";
 import { getXMLCompletionItems } from "./libraries/xml.suggest";
 import { getYAMLCompletionItems } from "./libraries/yaml.suggest";
+import { gettomlCompletionItems } from "./libraries/toml.suggest";
 
 /**
  * The function `getTagSpecificSuggestions` returns completion items based on the specified tag type
@@ -52,6 +53,8 @@ export const getTagSpecificSuggestions = (
 				return getXMLCompletionItems(document, position);
 			case "yaml":
 				return getYAMLCompletionItems(document, position);
+			case "toml":
+				return gettomlCompletionItems(document, position);
 			default:
 				return [];
 		}

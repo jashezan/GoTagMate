@@ -111,12 +111,40 @@ const tags: Tag[] = [
 		documentation: ['yaml:"name"'],
 	},
 	{
+		label: "toml",
+		detail: "TOML tags for struct fields",
+		insertText: 'toml:"$1"',
+		triggerSuggest: true,
+		documentation: ['toml:"name"'],
+	},
+	{
 		label: "form",
 		detail: "FORM tags for struct fields",
 		insertText: 'form:"$1"',
 		triggerSuggest: true,
 		documentation: ['form:"name"'],
 	},
+	{
+		label: "comment",
+		detail: "Adds a # comment on the same line as the field in the TOML output, library: github.com/pelletier/go-toml",
+		insertText: 'comment:"$1"',
+		triggerSuggest: false,
+		documentation: ['toml:"postgres" comment:"Postgres configuration"'],
+	},
+	{
+		label: "commented",
+		detail: "Emits the field as a commented-out value when set to 'true', library: github.com/pelletier/go-toml",
+		insertText: 'commented:"$1"',
+		triggerSuggest: false,
+		documentation: ['toml:"db" commented:"true" comment:"not used anymore"'],
+	},
+	{
+		label: "default",
+		detail: "Provides a default value for the field if not specified in TOML, or if the value is empty or zero-valued, library: github.com/pelletier/go-toml",
+		insertText: 'default:"$1"',
+		triggerSuggest: false,
+		documentation: ['toml:"user" default:"guest"'],
+	}
 ];
 
 /**
