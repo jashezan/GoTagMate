@@ -38,7 +38,7 @@ export const getEnvCompletionItems = (
 	const fieldName = getFieldName(document, position);
 	if (fieldName) {
 		addFieldSuggestions(envSuggestions, fieldName, "env", [
-			"SCREAMING_SNAKE_CASE"
+			"SCREAMING_SNAKE_CASE",
 		]);
 	}
 
