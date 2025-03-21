@@ -2,6 +2,8 @@ export interface ITag {
 	keyword: string | null | undefined;
 	description: string | null | undefined;
 	library_link: string[] | null | undefined;
+	version?: string | null | undefined;
+	last_published?: string | null | undefined;
 	tag_list: ITagList[] | null | undefined;
 }
 export interface ITagList {
