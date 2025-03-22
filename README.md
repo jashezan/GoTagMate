@@ -1,158 +1,147 @@
-# GoTagMate - VSCode Extension for Go Struct Tags
+# GoTagMate - The Ultimate VSCode Extension for Go Struct Tags
 
-![GoTagMate](./assets/gotagmate.png)
+[![GoTagMate Usage GIF](https://cdn.jsdelivr.net/gh/jashezan/GoTagMate@main/assets/gotagmate.png)](https://github.com/jashezan/GoTagMate)
 
-GoTagMate is a powerful and user-friendly VSCode extension designed to simplify working with Go struct tags. It provides intelligent suggestions, autocompletion, and detailed documentation for popular Go libraries like `json`, `gorm`, and `validate`. Whether you're a beginner or an experienced Go developer, GoTagMate will save you time and reduce errors when writing struct tags.
+GoTagMate is a powerful and user-friendly VSCode extension designed to **simplify working with Go struct tags**. It provides **intelligent suggestions, autocompletion, and detailed documentation** for popular Go libraries like `json`, `gorm`, `validate`, and many more. **Press `Ctrl + Space` if suggestions don't appear automatically.**
 
----
-
-## Features
-
-### **Non-Technical Features**
-1. **Automatic Suggestions**:
-   - As soon as you type a backtick (\`) in a Go struct, GoTagMate will suggest popular tag options like `json:""`, `gorm:""`, and `validate:""`.
-
-2. **Context-Aware Autocompletion**:
-   - After selecting a tag (e.g., `json:""`), GoTagMate will provide relevant suggestions for that specific tag. For example:
-     - For `json:""`, it suggests `omitempty`, `string`, and `-`.
-     - For `gorm:""`, it suggests `column`, `type`, `index`, and more.
-     - For `validate:""`, it suggests `required`, `email`, `rgb`, and more.
-
-3. **Re-trigger Suggestions**:
-   - If your cursor is inside double quotes (`""`) and you type a space (` `), equal sign (`=`), semicolon (`;`), or comma (`,`), GoTagMate will re-trigger suggestions to help you complete the tag.
-
-4. **Detailed Documentation**:
-   - Hover over any suggested tag to see a detailed description of its purpose and usage examples.
-
-5. **User-Friendly**:
-   - Designed to be intuitive and easy to use, even for beginners. No complex setup or configuration is required.
-
-6. **Extensible**:
-   - GoTagMate is built to support additional libraries in the future. You can easily extend it to include custom tags or new libraries.
+> **Why GoTagMate?** Writing Go struct tags manually can be tedious and error-prone. Missing a comma, mistyping a field, or forgetting a tag option can break your code. GoTagMate solves this problem by automatically suggesting and completing struct tags, reducing errors and boosting productivity.
 
 ---
 
-### **Technical Features**
-1. **Backtick Trigger**:
-   - The extension listens for the backtick character (\`) in Go structs and automatically provides suggestions for `json:""`, `gorm:""`, and `validate:""`.
+## 🚀 Features
 
-2. **Regex-Based Parsing**:
-   - Uses regular expressions to detect the cursor's position and context (e.g., inside double quotes or after a specific tag type).
+### 🧑‍💻 **For Beginners and Pros Alike**
+- **Smart Autocompletion**: Start typing a struct tag, and GoTagMate suggests valid options instantly.
+- **Context-Aware Suggestions**: It knows what tag you're using (`json`, `gorm`, `validate`, etc.) and provides relevant completions.
+- **Hover Descriptions**: Hover over a tag to see its meaning and usage examples.
+- **Error Reduction**: Avoid typos and formatting mistakes with GoTagMate’s structured suggestions.
 
-3. **Dynamic Suggestions**:
-   - Suggestions are dynamically generated based on the tag type (`json`, `gorm`, `validate`) and the cursor's position.
-
-4. **Library-Specific Tag Data**:
-   - Tag data (e.g., `gorm`, `validate`) is stored in a modular and extensible format (`tags.ts`), making it easy to add support for new libraries.
-
-5. **Re-trigger on Specific Characters**:
-   - The extension re-triggers suggestions when the cursor is inside double quotes and encounters specific characters (` `, `=`, `;`, `,`).
-
-6. **Markdown Documentation**:
-   - Detailed documentation for each tag is displayed in a Markdown format when hovering over a suggestion.
-
-7. **Optimized Performance**:
-   - The extension is designed to be lightweight and fast, ensuring minimal impact on VSCode's performance.
-
-8. **Modular Codebase**:
-   - The code is organized into reusable modules (e.g., `completionProvider.ts`, `tags.ts`) for easy maintenance and future extensions.
+### 🛠 **Technical Features**
+- **Backtick (`) Trigger**: Suggestions appear as soon as you type a backtick inside a Go struct.
+- **Regex-Based Parsing**: Detects cursor position and tag context dynamically.
+- **Extensive Library Support** (See [Supported Libraries](#-supported-libraries))
+- **Re-Trigger on Key Presses**: Automatically shows suggestions when typing ` `, `=`, `;`, or `,`.
+- **Lightweight and Fast**: Optimized to ensure minimal impact on VSCode performance.
 
 ---
 
-## How It Works
+## 📖 Usage Guide
 
-### **For Non-Technical Users**
-1. Open a Go file in VSCode.
-2. Start typing a struct field and add a backtick (`).
-3. GoTagMate will suggest `json:""`, `gorm:""`, and `validate:""`.
-4. Select a tag (e.g., `json:""`), and it will provide relevant suggestions (e.g., `omitempty`, `string`).
-5. Hover over any suggestion to see detailed documentation.
-6. If you're inside double quotes and type a space, equal sign, semicolon, or comma, GoTagMate will re-trigger suggestions to help you complete the tag.
+### ✨ **How to Use GoTagMate?**
+1. **Install GoTagMate** from the VSCode Marketplace or manually via `.vsix`.
+2. **Open a Go file** in VSCode.
+3. **Start typing a struct field** and add a backtick ` `` `.
+4. **Select a tag** from the suggestions (e.g., `json:""`).
+5. **Use contextual suggestions** to complete the tag (e.g., `omitempty`, `string`).
+6. **Hover over suggestions** to see descriptions and usage examples.
+7. **If suggestions don’t appear**, press `Ctrl + Space` to manually trigger them.
 
-### **For Technical Users**
-1. The extension uses a **Completion Provider** to detect the cursor's position and context.
-2. When a backtick is typed, it triggers the `provideCompletionItems` method, which suggests initial tags (`json`, `gorm`, `validate`).
-3. Once a tag is selected, the extension uses regex to detect the tag type and provides library-specific suggestions.
-4. The `getJsonProperties` method extracts JSON properties from the document for `json:""` suggestions.
-5. The `createCompletionItem` method generates completion items with detailed documentation.
-6. The extension re-triggers suggestions when specific characters (` `, `=`, `;`, `,`) are encountered inside double quotes.
+> **Pro Tip:** Enable the following VSCode settings for the best experience:
+> ```json
+> "editor.hover.enabled": true,
+> "editor.parameterHints.enabled": true,
+> "editor.quickSuggestions": true
+> ```
 
 ---
 
-## Installation
+## 📌 Supported Libraries
+GoTagMate provides struct tag suggestions for the following popular Go libraries:
 
+- [`bson`](https://pkg.go.dev/go.mongodb.org/mongo-driver/bson) (MongoDB)
+- [`gorm`](https://pkg.go.dev/gorm.io/gorm) (ORM)
+- [`validate`](https://pkg.go.dev/github.com/go-playground/validator/v10) (Validation)
+- [`json`](https://pkg.go.dev/encoding/json) (Standard JSON)
+- [`yaml.v3`](https://pkg.go.dev/gopkg.in/yaml.v3) (YAML Parsing)
+- [`xml`](https://pkg.go.dev/encoding/xml) (XML Processing)
+- [`env`](https://pkg.go.dev/github.com/caarlos0/env/v11) (Environment Variables)
+- [`msgpack`](https://pkg.go.dev/github.com/vmihailenco/msgpack) (MessagePack)
+- [`dynamodb`](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue) (AWS DynamoDB)
+- [`redis`](https://pkg.go.dev/github.com/redis/go-redis/v9) (Redis)
+- [`gin`](https://pkg.go.dev/github.com/gin-gonic/gin) (Gin Web Framework)
+- [`bun`](https://pkg.go.dev/github.com/uptrace/bun) (Bun ORM)
+- [`conform`](https://pkg.go.dev/github.com/leebenson/conform) (Data Normalization)
+- [`toml`](https://pkg.go.dev/github.com/BurntSushi/toml) (TOML Parsing)
+- [`go-toml`](https://pkg.go.dev/github.com/pelletier/go-toml) (TOML Parsing)
+- [`hcl`](https://pkg.go.dev/github.com/alecthomas/hcl) (HCL Parsing)
+
+... and many more! (See [`DOCS.md`](docs/DOCS.md#supported-libraries) for the full list)
+
+---
+
+## 🔥 Why You Need GoTagMate
+🚨 **Without GoTagMate:**
+- Manual struct tag writing is **tedious** and **error-prone**.
+- You need to **constantly check documentation**.
+- Forgetting a tag format or mistyping causes **bugs**.
+- Productivity suffers due to **repetitive** work.
+
+✅ **With GoTagMate:**
+- **Saves Time** by suggesting tags instantly.
+- **Prevents Errors** with correct tag syntax.
+- **Boosts Productivity** by automating struct tag completion.
+- **Simplifies Learning** for beginners with descriptions and examples.
+
+If you're working with Go structs, GoTagMate is **a must-have tool** to streamline your development workflow.
+
+---
+
+## 🛠 Installation
+### **Option 1: Install from VSCode Marketplace**
 1. Open VSCode.
-2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl+Shift+X`.
-3. Search for "GoTagMate".
-4. Click the Install button.
+2. Go to **Extensions (`Ctrl + Shift + X`)**.
+3. Search for **Go Tag Mate**.
+4. Click **Install** and reload VSCode.
+
+### **Option 2: Install Manually (.vsix file)**
+1. Download the latest `.vsix` file from the [Releases](https://github.com/jashezan/GoTagMate/releases) page.
+2. Open VSCode and go to Extensions (`Ctrl + Shift + X`).
+3. Click the **three-dot menu (`...`)** > **Install from VSIX...**.
+4. Select the downloaded `.vsix` file and install.
+5. Restart VSCode.
 
 ---
 
-## Usage
+## ⚡ Configuration
+To ensure GoTagMate works seamlessly, make sure the following settings are enabled:
 
-1. Open a Go file in VSCode.
-2. Start typing a struct field and add a backtick (`).
-3. Select a tag from the suggestions (e.g., `json:""`).
-4. Use the suggestions to complete the tag.
-5. Hover over any suggestion to see detailed documentation.
+```json
+"editor.hover.enabled": true,
+"editor.parameterHints.enabled": true,
+"editor.quickSuggestions": true
+```
 
----
-
-## Supported Libraries
-
-1. **JSON**:
-   - Tags: `omitempty`, `string`, `-`.
-   - Description: Simplifies JSON serialization and deserialization.
-
-2. **GORM**:
-   - Tags: `column`, `type`, `index`, `unique`, `constraint`.
-   - Description: Helps define database schema and relationships.
-
-3. **Validate**:
-   - Tags: `required`, `email`, `rgb`, `min`, `max`.
-   - Description: Provides field validation for structs.
+These settings **enable hover descriptions and inline suggestions**, making GoTagMate even more powerful.
 
 ---
 
-## Roadmap
+## 🤝 Contributing
+Want to improve GoTagMate? Contributions are welcome! 🎉
 
-1. **Add Support for More Libraries**:
-   - Extend GoTagMate to support additional libraries like `xml`, `yaml`, and `bson`.
+### Application Overview
 
-2. **Custom Tag Definitions**:
-   - Allow users to define custom tags and suggestions.
+- [Documentation](docs/DOCS.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Application Flow](docs/APP_FLOW.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Contributing Guidelines](CONTRIBUTING.md)
+- [Security Policy](SECURITY.md)
 
-3. **Enhanced Documentation**:
-   - Add more detailed usage examples and links to official documentation.
-
-4. **Configuration Options**:
-   - Add settings to enable/disable specific libraries or customize trigger characters.
-
----
-
-## Contributing
-
-We welcome contributions! If you'd like to add support for a new library or improve the extension, follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Submit a pull request with a detailed description of your changes.
+### **Ways to Contribute**:
+- **Report Issues**: Found a bug or missing tag? [Open an issue](https://github.com/jashezan/GoTagMate/issues).
+- **Suggest Features**: Have an idea to enhance GoTagMate? Let us know!
+- **Code Contributions**: Fork the repo, make changes, and submit a PR.
 
 ---
 
-## License
-
-GoTagMate is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Feedback and Support
-
-If you have any questions, suggestions, or issues, please open an issue on the [GitHub repository](https://github.com/jashezan/GoTagMate). We'd love to hear from you!
+## 📜 License
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Conclusion
+## ⭐ Support the Project
+If you find GoTagMate useful, consider giving it a ⭐ on [GitHub](https://github.com/jashezan/GoTagMate)!
 
-GoTagMate is your go-to VSCode extension for working with Go struct tags. It simplifies the process of writing and managing tags, saving you time and reducing errors. Try it out today and experience the difference!
+---
 
+### 🚀 **GoTagMate - Stop Wasting Time on Struct Tags. Start Coding Faster.**

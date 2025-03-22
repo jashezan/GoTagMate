@@ -114,7 +114,18 @@
 				"editor.hover.enabled": true,
 				"editor.insertSpaces": false,
 				"editor.links": true,
-				"editor.tabCompletion": "on"
+				"editor.parameterHints.enabled": true,
+				"editor.quickSuggestions": {
+					"comments": "inline",
+					"other": "on",
+					"strings": "on"
+				},
+				"editor.suggest.preview": true,
+				"editor.suggest.showUsers": true,
+				"editor.suggestOnTriggerCharacters": true,
+				"editor.suggestSelection": "first",
+				"editor.tabCompletion": "on",
+				"editor.wordBasedSuggestions": "allDocuments"
 			}
 		},
 		"languages": [
@@ -189,7 +200,7 @@
 		]
 	},
 	"main": "./out/extension.js",
-	"name": "Go Tag Mate",
+	"name": "GoTagMate",
 	"preview": false,
 	"pricing": "Free",
 	"private": false,
@@ -210,6 +221,7 @@
 		"lint": "biome lint .",
 		"lint:fix": "biome lint --write .",
 		"prepare": "husky",
+		"test": "vitest",
 		"validate": "biome format --write . && biome lint --write . && biome check --write .",
 		"vscode:prepublish": "npm run compile",
 		"watch": "tsc -watch -p ./"
