@@ -3,11 +3,10 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## Unreleased
 
 ## 1.0.0
 
-Date: March 21, 2025
+Date: March 22, 2025
 
 * [Jubyer Ahmed Shezan (@jashezan)](https://github.com/jashezan)
     * Added Full Support for  Go Libraries
@@ -38,6 +37,8 @@ Date: March 21, 2025
 	* Updated README.md
 	* Updated tsconfig.json
 	* Changed the extension name from "GoTagMate" to "Go Tag Mate"
+	* Edited the logo and made it more visible
+	* Added Usage GIF in README.md
 
 
 ## 0.0.1
@@ -53,3 +54,5 @@ Date: March 18, 2025
 	* Added LICENSE
 	* Added CODE_OF_CONDUCT.md
 	* Added SECURITY.md
+
+## Unreleased
