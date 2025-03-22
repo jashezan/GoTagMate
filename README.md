@@ -1,6 +1,6 @@
 # GoTagMate - The Ultimate VSCode Extension for Go Struct Tags
 
-[![GoTagMate Usage GIF](https://cdn.jsdelivr.net/gh/jashezan/GoTagMate@main/assets/gotagmate.png)](https://github.com/jashezan/GoTagMate)
+[![GoTagMate Usage GIF](https://cdn.jsdelivr.net/gh/jashezan/GoTagMate@main/assets/gotagmate.gif)](https://github.com/jashezan/GoTagMate)
 
 GoTagMate is a powerful and user-friendly VSCode extension designed to **simplify working with Go struct tags**. It provides **intelligent suggestions, autocompletion, and detailed documentation** for popular Go libraries like `json`, `gorm`, `validate`, and many more. **Press `Ctrl + Space` if suggestions don't appear automatically.**
 
