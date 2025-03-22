@@ -6,10 +6,14 @@
  */
 export function toSnakeCase(str: string): string {
 	return str
-		.replace(/([A-Z])/g, (letter) => `_${letter.toLowerCase()}`) // Converts uppercase to lowercase with an underscore
-		.replace(/^_/, "") // Removes the underscore from the beginning of the string
-		.replace(/([a-z])_([a-z])/g, (match, p1, p2) => `${p1}${p2}`) // Removes the underscore between two lowercase letters
-		.replace(/_+/g, "_"); // Replaces multiple consecutive underscores with a single underscore
+		.replace(/([a-z])([A-Z])/g, "$1_$2") // Separate lowercase-uppercase transitions
+		.replace(/([A-Z]+)([A-Z][a-z])/g, "$1_$2") // Separate acronyms from words
+		.replace(/(\d+)([A-Za-z])/g, "$1_$2") // Separate numbers from letters
+		.replace(/[^a-zA-Z0-9!@#$%^&*()]+/g, "_") // Replace non-alphanumeric characters (except special chars) with underscores
+		.replace(/([!@#$%^&*()]+)([A-Za-z])/g, "$1_$2") // Separate special characters from letters
+		.replace(/_+/g, "_") // Replace multiple underscores with a single underscore
+		.replace(/^_+|_+$/g, "") // Trim leading & trailing underscores
+		.toLowerCase();
 }
 
 /**
@@ -21,10 +25,13 @@ export function toSnakeCase(str: string): string {
  */
 export function toScreamingSnakeCase(str: string): string {
 	return str
-		.replace(/([A-Z])/g, (letter) => `_${letter.toLowerCase()}`) // Converts uppercase to lowercase with an underscore
-		.replace(/^_/, "") // Removes the underscore from the beginning of the string
-		.replace(/([a-z])_([a-z])/g, (match, p1, p2) => `${p1}${p2}`) // Removes the underscore between two lowercase letters
-		.replace(/_+/g, "_") // Replaces multiple consecutive underscores with a single underscore
+		.replace(/([a-z])([A-Z])/g, "$1_$2") // Separate lowercase-uppercase transitions
+		.replace(/([A-Z]+)([A-Z][a-z])/g, "$1_$2") // Separate acronyms from words
+		.replace(/(\d+)([A-Za-z])/g, "$1_$2") // Separate numbers from letters
+		.replace(/[^a-zA-Z0-9!@#$%^&*()]+/g, "_") // Replace non-alphanumeric characters (except special chars) with underscores
+		.replace(/([!@#$%^&*()]+)([A-Za-z])/g, "$1_$2") // Separate special characters from letters
+		.replace(/_+/g, "_") // Replace multiple underscores with a single underscore
+		.replace(/^_+|_+$/g, "") // Trim leading & trailing underscores
 		.toUpperCase(); // Converts the string to uppercase
 }
 
@@ -58,9 +65,16 @@ export function toTrainCase(str: string): string {
  */
 export function toPascalCase(str: string): string {
 	return str
-		.replace(/[_\s-]+(.)?/g, (_, c) => (c ? c.toUpperCase() : "")) // Capitalize letters after special characters
-		.replace(/^(.)/, (c) => c.toUpperCase()) // Ensure first letter is uppercase
-		.replace(/[^a-zA-Z0-9]/g, ""); // Remove non-alphanumeric characters
+		.replace(/([a-z])([A-Z])/g, "$1_$2") // Separate lowercase-uppercase transitions
+		.replace(/([A-Z]+)([A-Z][a-z])/g, "$1_$2") // Separate acronyms from words
+		.replace(/(\d+)([A-Za-z])/g, "$1_$2") // Separate numbers from letters
+		.replace(/[^a-zA-Z0-9!@#$%^&*()]+/g, "_") // Replace non-alphanumeric characters (except special chars) with underscores
+		.replace(/([!@#$%^&*()]+)([A-Za-z])/g, "$1_$2") // Separate special characters from letters
+		.replace(/_+/g, "_") // Replace multiple underscores with a single underscore
+		.replace(/^_+|_+$/g, "") // Trim leading & trailing underscores
+		.toLowerCase() // Convert the string to lowercase
+		.replace(/(^|_)(.)/g, (_, __, c) => c.toUpperCase()) // Capitalize the first letter of each word
+		.replace(/[^a-zA-Z0-9]/g, ""); // Remove any remaining non-alphanumeric characters
 }
 
 /**
@@ -72,9 +86,24 @@ export function toPascalCase(str: string): string {
  */
 export function toCamelCase(str: string): string {
 	return str
-		.replace(/[_\s-]+(.)?/g, (_, c) => (c ? c.toUpperCase() : "")) // Capitalize letters after special characters
-		.replace(/^(.)/, (c) => c.toLowerCase()) // Ensure the first letter is lowercase
-		.replace(/[^a-zA-Z0-9]/g, ""); // Remove non-alphanumeric characters
+		.replace(/([a-z])([A-Z])/g, "$1_$2") // Separate lowercase-uppercase transitions
+		.replace(/([A-Z]+)([A-Z][a-z])/g, "$1_$2") // Separate acronyms from words
+		.replace(/(\d+)([A-Za-z])/g, "$1_$2") // Separate numbers from letters
+		.replace(/[^a-zA-Z0-9!@#$%^&*()]+/g, "_") // Replace non-alphanumeric characters (except special chars) with underscores
+		.replace(/([!@#$%^&*()]+)([A-Za-z])/g, "$1_$2") // Separate special characters from letters
+		.replace(/_+/g, "_") // Replace multiple underscores with a single underscore
+		.replace(/^_+|_+$/g, "") // Trim leading & trailing underscores
+		.toLowerCase()
+		.split("_") // Split the string by underscores
+		.map((word, index) => {
+			if (index === 0) {
+				// The first word should be lowercase
+				return word.toLowerCase();
+			}
+			// Capitalize the first letter of subsequent words
+			return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+		})
+		.join(""); // Join the words back together
 }
 
 /**
